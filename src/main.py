@@ -25,7 +25,7 @@ from langchain.prompts import ChatPromptTemplate
 # ─────────────────────────────────────────────
 RAW_DATA_DIR   = PROJECT_ROOT / "data" / "raw"
 CHROMA_DB_DIR  = PROJECT_ROOT / "chroma_db"
-COLLECTION     = "logistics_docs"
+COLLECTION     = "retail_docs"
 CHUNK_SIZE     = 1000
 CHUNK_OVERLAP  = 200
 TOP_K          = 5
@@ -149,7 +149,7 @@ def get_vectorstore(force_rebuild: bool = False):
 # 4. RAG CHAIN
 # ─────────────────────────────────────────────
 SYSTEM_PROMPT = """\
-You are a helpful logistics assistant. Use the document excerpts below to answer the question.
+You are a helpful Retail assistant. Use the document excerpts below to answer the question.
 
 Rules:
 - Answer using ONLY the information in the excerpts.
@@ -210,7 +210,7 @@ def build_answer(vectorstore, question: str, verbose: bool = False) -> str:
 # ─────────────────────────────────────────────
 def chat(vectorstore):
     print("\n" + "="*60)
-    print("🤖  Logistics RAG Assistant (Powered by Gemini)")
+    print("🤖  Retail RAG Assistant (Powered by Gemini)")
     print("="*60)
     print("Commands:")
     print("  • Type a question to get an answer")
@@ -257,7 +257,7 @@ def main():
         sys.exit(1)
 
     print("\n" + "="*60)
-    print("🚀  LOGISTICS RAG SYSTEM (Gemini Edition)")
+    print("🚀  Retail RAG SYSTEM (Gemini Edition)")
     print("="*60 + "\n")
 
     # Get vector store (will rebuild if needed)

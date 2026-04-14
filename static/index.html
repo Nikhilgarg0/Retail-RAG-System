@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LogiRAG — Logistics Intelligence</title>
-  <meta name="description" content="Ask questions about your logistics documents using AI-powered retrieval." />
+  <title>RetailRAG — Retail Intelligence</title>
+  <meta name="description" content="Ask questions about your retail documents using AI-powered retrieval." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -962,8 +962,8 @@
         <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
       </div>
       <div>
-        <div class="sidebar-brand-name">LogiRAG</div>
-        <div class="sidebar-brand-sub">Logistics Intelligence</div>
+        <div class="sidebar-brand-name">RetailRAG</div>
+        <div class="sidebar-brand-sub">Retail Intelligence</div>
       </div>
     </div>
 
@@ -1006,9 +1006,9 @@
     <!-- Topbar -->
     <div class="topbar">
       <div class="topbar-left">
-        <span class="topbar-title">LogiRAG</span>
+        <span class="topbar-title">RetailRAG</span>
         <div class="topbar-sep"></div>
-        <span class="topbar-sub">Logistics Document Intelligence</span>
+        <span class="topbar-sub">Retail Document Intelligence</span>
       </div>
       <div id="topbar-status"></div>
     </div>
@@ -1028,8 +1028,8 @@
         <div class="gate-eyebrow">Getting Started</div>
         <div class="gate-title">No Documents Loaded</div>
         <div class="gate-sub">
-          Upload logistics PDF files to begin asking questions.
-          Non-logistics documents are automatically rejected.
+          Upload retail PDF files to begin asking questions.
+          Non-retail documents are automatically rejected.
         </div>
         <div class="gate-steps">
           <div class="gate-step">
@@ -1056,7 +1056,7 @@
               <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
             </div>
             <div class="empty-title">Start a conversation</div>
-            <div class="empty-sub">Ask anything about your logistics documents — shipments, routes, carriers, timelines, compliance, and more.</div>
+            <div class="empty-sub">Ask anything about your retail documents — products, pricing, inventory, sales, suppliers, and more.</div>
           </div>
         </div>
 
@@ -1066,7 +1066,7 @@
             type="text"
             id="chat-input"
             class="input-field"
-            placeholder="Ask a question about your logistics documents…"
+            placeholder="Ask a question about your retail documents…"
             autocomplete="off"
           />
           <button class="send-btn" id="send-btn">Send</button>
@@ -1078,9 +1078,9 @@
     <div class="tab-panel" id="tab-upload">
       <div class="tab-content">
         <div class="panel">
-          <div class="panel-title">Upload Logistics Documents</div>
+          <div class="panel-title">Upload Retail Documents</div>
           <div class="panel-sub">
-            Upload one or more PDF files. Only logistics and transport-related documents are accepted;
+            Upload one or more PDF files. Only retail and product-related documents are accepted;
             others will be automatically rejected by the AI classifier.
           </div>
 
@@ -1165,10 +1165,10 @@ function setTheme(mode) {
   document.body.classList.toggle('light', mode === 'light');
   $('#theme-dark').classList.toggle('active', mode === 'dark');
   $('#theme-light').classList.toggle('active', mode === 'light');
-  localStorage.setItem('logirag-theme', mode);
+  localStorage.setItem('retailrag-theme', mode);
 }
 (function initTheme() {
-  const saved = localStorage.getItem('logirag-theme') || 'dark';
+  const saved = localStorage.getItem('retailrag-theme') || 'dark';
   setTheme(saved);
 })();
 
@@ -1332,7 +1332,7 @@ function renderMessages() {
           </svg>
         </div>
         <div class="empty-title">Start a conversation</div>
-        <div class="empty-sub">Ask anything about your logistics documents — shipments, routes, carriers, timelines, compliance, and more.</div>
+        <div class="empty-sub">Ask anything about your retail documents — products, pricing, inventory, sales, suppliers, and more.</div>
       </div>`;
     $('#clear-chat-wrap').style.display = 'none';
     return;
@@ -1367,7 +1367,7 @@ function renderMessages() {
       }
       html += `
         <div class="msg-row">
-          <div class="msg-meta">LogiRAG<span class="msg-meta-time">${time}</span></div>
+          <div class="msg-meta">RetailRAG<span class="msg-meta-time">${time}</span></div>
           <div class="msg-text">${content}</div>
           ${sourcesHtml}
         </div>`;

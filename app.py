@@ -1,5 +1,5 @@
 """
-app.py - FastAPI backend for Logistics RAG system
+app.py - FastAPI backend for Retail RAG system
 Run: uvicorn app:app --reload
 """
 import os
@@ -33,7 +33,7 @@ load_dotenv()
 RAW_DATA_DIR  = PROJECT_ROOT / "data" / "raw"
 CHROMA_DB_DIR = PROJECT_ROOT / "chroma_db"
 STATIC_DIR    = PROJECT_ROOT / "static"
-COLLECTION    = "logistics_docs"
+COLLECTION    = "retail_docs"
 CHUNK_SIZE    = 1000
 CHUNK_OVERLAP = 200
 TOP_K         = 5
@@ -42,18 +42,17 @@ GEMINI_MODEL  = "models/gemini-2.5-flash"
 RAW_DATA_DIR.mkdir(parents=True, exist_ok=True)
 STATIC_DIR.mkdir(exist_ok=True)
 
-LOGISTICS_KEYWORDS = [
-    "shipment", "freight", "cargo", "transport", "delivery", "logistics",
-    "warehouse", "inventory", "supply chain", "shipping", "dispatch",
-    "consignment", "bill of lading", "customs", "import", "export",
-    "carrier", "route", "fleet", "tracking", "order fulfillment",
-    "distribution", "container", "pallets", "last mile", "3pl", "forwarder"
+RETAIL_KEYWORDS = [
+    "product", "sku", "inventory", "sales", "store", "merchandise",
+    "pricing", "catalog", "supplier", "purchase order", "retail",
+    "stock", "revenue", "margin", "discount", "category", "brand",
+    "customer", "order", "refund", "warehouse", "shelf", "vendor"
 ]
 
 # ─────────────────────────────────────────────
 # FASTAPI APP
 # ─────────────────────────────────────────────
-app = FastAPI(title="Logistics RAG System")
+app = FastAPI(title="Retail RAG System")
 
 app.add_middleware(
     CORSMiddleware,
@@ -83,10 +82,10 @@ def safe_delete_chromadb(path: Path):
             print(f"Warning: Could not delete {path}: {e}")
 
 
-def is_logistics_document(pdf_path: Path):
+def is_retail_document(pdf_path: Path):
     """
-    Classify whether a PDF is logistics/transport related.
-    Returns (is_logistics: bool, reason: str).
+    Classify whether a PDF is Retail related.
+    Returns (is_retail: bool, reason: str).
     """
     try:
         loader = PyPDFLoader(str(pdf_path))
@@ -100,7 +99,7 @@ def is_logistics_document(pdf_path: Path):
             return False, "The PDF appears to be empty or unreadable."
 
         lowered = sample_text.lower()
-        keyword_hits = [kw for kw in LOGISTICS_KEYWORDS if kw in lowered]
+        keyword_hits = [kw for kw in RETAIL_KEYWORDS if kw in lowered]
 
         llm = ChatGoogleGenerativeAI(
             model=GEMINI_MODEL,
@@ -108,7 +107,7 @@ def is_logistics_document(pdf_path: Path):
             convert_system_message_to_human=True
         )
 
-        classification_prompt = f"""You are a document classifier. Analyze the following text from a PDF and determine if it is related to logistics, transportation, supply chain, shipping, freight, or related domains.
+        classification_prompt = f"""You are a document classifier. Analyze the following text from a PDF and determine if it is related to retail, merchandise, sales, inventory, product management or related domains.
 
 Text sample:
 \"\"\"
@@ -118,9 +117,9 @@ Text sample:
 Keyword hints found: {keyword_hits if keyword_hits else 'none'}
 
 Respond with ONLY a JSON object in this exact format (no markdown, no explanation):
-{{"is_logistics": true, "confidence": "high", "reason": "one sentence explanation"}}
+{{"is_retail": true, "confidence": "high", "reason": "one sentence explanation"}}
 
-Be strict: only return true if the document is genuinely about logistics/transport/supply chain operations."""
+Be strict: only return true if the document is genuinely about retail/sales/product/inventory operations."""
 
         response = llm.invoke([("human", classification_prompt)])
         content  = response.content.strip()
@@ -128,7 +127,7 @@ Be strict: only return true if the document is genuinely about logistics/transpo
         json_match = re.search(r'\{.*\}', content, re.DOTALL)
         if json_match:
             result = json.loads(json_match.group())
-            return result.get("is_logistics", False), result.get("reason", "Classification complete.")
+            return result.get("is_retail", False), result.get("reason", "Classification complete.")
 
         return len(keyword_hits) >= 2, f"Keyword-based detection: {keyword_hits}"
 
@@ -206,7 +205,7 @@ def get_answer(question: str, include_sources: bool = True):
         else:
             raise HTTPException(
                 status_code=400,
-                detail="No documents uploaded yet. Please upload a logistics PDF first."
+                detail="No documents uploaded yet. Please upload a Retail PDF first."
             )
 
     docs = vectorstore.similarity_search(question, k=TOP_K)
@@ -238,7 +237,7 @@ def get_answer(question: str, include_sources: bool = True):
         convert_system_message_to_human=True
     )
 
-    prompt_template = """You are a helpful logistics assistant. Use ONLY the document excerpts below to answer the question.
+    prompt_template = """You are a helpful Retail assistant. Use ONLY the document excerpts below to answer the question.
 
 Rules:
 - Answer using ONLY the information in the excerpts.
@@ -293,7 +292,7 @@ async def root():
 
 @app.post("/upload", response_model=UploadResponse)
 async def upload_pdfs(files: List[UploadFile] = File(...)):
-    """Upload one or multiple PDFs. Each is validated as logistics content before ingestion."""
+    """Upload one or multiple PDFs. Each is validated as Retail content before ingestion."""
     if not files:
         raise HTTPException(status_code=400, detail="No files provided.")
 
@@ -312,14 +311,14 @@ async def upload_pdfs(files: List[UploadFile] = File(...)):
             f.write(content)
 
         print(f"\nClassifying: {file.filename}")
-        is_logistics, reason = is_logistics_document(file_path)
+        is_retail, reason = is_retail_document(file_path)
 
-        if not is_logistics:
+        if not is_retail:
             print(f"  Rejected: {reason}")
             file_path.unlink(missing_ok=True)
             rejected.append({
                 "filename": file.filename,
-                "reason": f"Not a logistics document: {reason}"
+                "reason": f"Not a retail document: {reason}"
             })
             continue
 
