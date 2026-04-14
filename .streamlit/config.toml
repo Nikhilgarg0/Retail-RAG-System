@@ -1,0 +1,6 @@
+[server]
+# Use polling instead of OS filesystem events.
+# This is required when the project is inside OneDrive / network drives
+# because OneDrive can block watchdog's OS-level file-change events.
+runOnSave = true
+fileWatcherType = "poll"
