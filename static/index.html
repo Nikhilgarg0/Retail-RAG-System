@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,36 +11,43 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     /* ── Reset & Base ─────────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg:          #0d0e14;
-      --sidebar:     #0f1018;
-      --surface:     #13141c;
-      --surface2:    #191a24;
-      --surface3:    #1f2030;
-      --border:      #27293a;
-      --border2:     #333549;
-      --text:        #dde0f0;
-      --subtext:     #7e82a0;
-      --muted:       #4a4d68;
-      --accent:      #4f72ff;
-      --accent2:     #3556e0;
-      --accent-glow: rgba(79,114,255,0.18);
-      --accent-soft: rgba(79,114,255,0.08);
-      --user-bubble: #1a1f42;
-      --success:     #10b981;
-      --danger:      #ef4444;
-      --warning:     #f59e0b;
-      --success-bg:  #052e1c;
-      --danger-bg:   #2d0b0b;
-      --warning-bg:  #2d1c05;
-      --scrollbar:   #27293a;
-      --radius:      8px;
-      --radius-lg:   12px;
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    html, body {
+    :root {
+      --bg: #0d0e14;
+      --sidebar: #0f1018;
+      --surface: #13141c;
+      --surface2: #191a24;
+      --surface3: #1f2030;
+      --border: #27293a;
+      --border2: #333549;
+      --text: #dde0f0;
+      --subtext: #7e82a0;
+      --muted: #4a4d68;
+      --accent: #4f72ff;
+      --accent2: #3556e0;
+      --accent-glow: rgba(79, 114, 255, 0.18);
+      --accent-soft: rgba(79, 114, 255, 0.08);
+      --user-bubble: #1a1f42;
+      --success: #10b981;
+      --danger: #ef4444;
+      --warning: #f59e0b;
+      --success-bg: #052e1c;
+      --danger-bg: #2d0b0b;
+      --warning-bg: #2d1c05;
+      --scrollbar: #27293a;
+      --radius: 8px;
+      --radius-lg: 12px;
+    }
+
+    html,
+    body {
       height: 100%;
       background: var(--bg);
       color: var(--text);
@@ -50,9 +58,18 @@
     }
 
     /* ── Scrollbar ── */
-    ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: transparent; }
-    ::-webkit-scrollbar-thumb { background: var(--scrollbar); border-radius: 99px; }
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--scrollbar);
+      border-radius: 99px;
+    }
 
     /* ── Layout shell ──────────────────────────────────────────── */
     .shell {
@@ -79,6 +96,7 @@
       align-items: center;
       gap: 10px;
     }
+
     .sidebar-logo {
       width: 30px;
       height: 30px;
@@ -89,17 +107,24 @@
       justify-content: center;
       flex-shrink: 0;
     }
+
     .sidebar-logo svg {
-      width: 16px; height: 16px;
-      stroke: #fff; fill: none;
-      stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+      width: 16px;
+      height: 16px;
+      stroke: #fff;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
+
     .sidebar-brand-name {
       font-size: 0.9rem;
       font-weight: 700;
       color: var(--text);
       letter-spacing: -0.02em;
     }
+
     .sidebar-brand-sub {
       font-size: 0.65rem;
       color: var(--muted);
@@ -139,24 +164,55 @@
       border-radius: 20px;
       margin-bottom: 4px;
     }
+
     .status-dot {
-      width: 6px; height: 6px;
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
       flex-shrink: 0;
     }
-    .status-online  { background: var(--success-bg); color: var(--success); border: 1px solid rgba(16,185,129,0.2); }
-    .status-offline { background: var(--danger-bg);  color: var(--danger);  border: 1px solid rgba(239,68,68,0.2); }
-    .status-warn    { background: var(--warning-bg); color: var(--warning); border: 1px solid rgba(245,158,11,0.2); }
-    .dot-online  { background: var(--success); }
-    .dot-offline { background: var(--danger); }
-    .dot-warn    { background: var(--warning); }
 
-    .status-group { margin-bottom: 1rem; }
-    .status-group .status-pill { display: flex; }
+    .status-online {
+      background: var(--success-bg);
+      color: var(--success);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+    }
+
+    .status-offline {
+      background: var(--danger-bg);
+      color: var(--danger);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+    }
+
+    .status-warn {
+      background: var(--warning-bg);
+      color: var(--warning);
+      border: 1px solid rgba(245, 158, 11, 0.2);
+    }
+
+    .dot-online {
+      background: var(--success);
+    }
+
+    .dot-offline {
+      background: var(--danger);
+    }
+
+    .dot-warn {
+      background: var(--warning);
+    }
+
+    .status-group {
+      margin-bottom: 1rem;
+    }
+
+    .status-group .status-pill {
+      display: flex;
+    }
 
     .offline-notice {
       background: var(--danger-bg);
-      border: 1px solid rgba(239,68,68,0.18);
+      border: 1px solid rgba(239, 68, 68, 0.18);
       border-radius: var(--radius);
       padding: 9px 12px;
       font-size: 0.78rem;
@@ -164,6 +220,7 @@
       line-height: 1.6;
       margin-top: 4px;
     }
+
     .offline-notice code {
       color: var(--accent);
       font-size: 0.76rem;
@@ -177,7 +234,10 @@
     }
 
     /* Document list */
-    #doc-list { list-style: none; }
+    #doc-list {
+      list-style: none;
+    }
+
     .doc-item {
       display: flex;
       align-items: center;
@@ -187,18 +247,27 @@
       margin-bottom: 2px;
       transition: background 0.12s;
     }
-    .doc-item:hover { background: var(--surface2); }
+
+    .doc-item:hover {
+      background: var(--surface2);
+    }
+
     .doc-badge {
-      width: 28px; height: 28px;
+      width: 28px;
+      height: 28px;
       background: var(--surface3);
       border: 1px solid var(--border);
       border-radius: 6px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.62rem; font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.62rem;
+      font-weight: 700;
       color: var(--subtext);
       letter-spacing: 0.04em;
       flex-shrink: 0;
     }
+
     .doc-name {
       flex: 1;
       font-size: 0.79rem;
@@ -208,11 +277,13 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
+
     .doc-size {
       font-size: 0.69rem;
       color: var(--muted);
       flex-shrink: 0;
     }
+
     .doc-remove {
       background: none;
       border: none;
@@ -225,7 +296,11 @@
       transition: color 0.12s, background 0.12s;
       flex-shrink: 0;
     }
-    .doc-remove:hover { color: var(--danger); background: var(--danger-bg); }
+
+    .doc-remove:hover {
+      color: var(--danger);
+      background: var(--danger-bg);
+    }
 
     .no-docs-note {
       font-size: 0.8rem;
@@ -251,6 +326,7 @@
       font-family: inherit;
       transition: background 0.12s, color 0.12s, border-color 0.12s;
     }
+
     .sidebar-btn:hover {
       background: var(--surface2);
       color: var(--text);
@@ -262,6 +338,7 @@
       display: flex;
       gap: 4px;
     }
+
     .theme-btn {
       flex: 1;
       padding: 6px;
@@ -275,11 +352,13 @@
       font-family: inherit;
       transition: all 0.12s;
     }
+
     .theme-btn.active {
       background: var(--surface3);
       color: var(--text);
       border-color: var(--border2);
     }
+
     .theme-btn:hover:not(.active) {
       background: var(--surface2);
       color: var(--text);
@@ -305,22 +384,26 @@
       background: var(--surface);
       border-bottom: 1px solid var(--border);
     }
+
     .topbar-left {
       display: flex;
       align-items: center;
       gap: 0;
     }
+
     .topbar-title {
       font-size: 0.88rem;
       font-weight: 600;
       color: var(--text);
     }
+
     .topbar-sep {
       width: 1px;
       height: 16px;
       background: var(--border);
       margin: 0 12px;
     }
+
     .topbar-sub {
       font-size: 0.76rem;
       color: var(--muted);
@@ -335,6 +418,7 @@
       padding: 0 2rem;
       flex-shrink: 0;
     }
+
     .tab-btn {
       padding: 0.7rem 1rem;
       background: none;
@@ -349,7 +433,11 @@
       transition: color 0.15s, border-color 0.15s;
       margin-bottom: -1px;
     }
-    .tab-btn:hover { color: var(--text); }
+
+    .tab-btn:hover {
+      color: var(--text);
+    }
+
     .tab-btn.active {
       color: var(--accent);
       border-bottom-color: var(--accent);
@@ -357,8 +445,16 @@
     }
 
     /* Tab panels */
-    .tab-panel { display: none; flex: 1; overflow: hidden; flex-direction: column; }
-    .tab-panel.active { display: flex; }
+    .tab-panel {
+      display: none;
+      flex: 1;
+      overflow: hidden;
+      flex-direction: column;
+    }
+
+    .tab-panel.active {
+      display: flex;
+    }
 
     /* ─────────────────────────────────────────────────────────────
        CHAT TAB
@@ -369,7 +465,10 @@
       flex-direction: column;
       overflow: hidden;
     }
-    #tab-chat.active { display: flex; }
+
+    #tab-chat.active {
+      display: flex;
+    }
 
     /* Gate screen */
     .gate {
@@ -382,18 +481,21 @@
       padding: 3rem 2rem;
       text-align: center;
     }
+
     .gate-title {
       font-size: 1.2rem;
       font-weight: 700;
       color: var(--text);
       letter-spacing: -0.02em;
     }
+
     .gate-sub {
       font-size: 0.88rem;
       color: var(--subtext);
       max-width: 360px;
       line-height: 1.65;
     }
+
     .gate-eyebrow {
       font-size: 0.7rem;
       font-weight: 600;
@@ -401,6 +503,7 @@
       text-transform: uppercase;
       color: var(--muted);
     }
+
     .gate-steps {
       display: flex;
       gap: 8px;
@@ -408,6 +511,7 @@
       justify-content: center;
       margin-top: 4px;
     }
+
     .gate-step {
       display: flex;
       align-items: center;
@@ -420,15 +524,19 @@
       color: var(--subtext);
       font-weight: 500;
     }
+
     .gate-step-num {
-      width: 20px; height: 20px;
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
       background: var(--accent-soft);
-      border: 1px solid rgba(79,114,255,0.25);
+      border: 1px solid rgba(79, 114, 255, 0.25);
       color: var(--accent);
       font-size: 0.68rem;
       font-weight: 700;
-      display: flex; align-items: center; justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       flex-shrink: 0;
     }
 
@@ -447,7 +555,10 @@
       border-radius: 0;
       transition: background 0.1s;
     }
-    .msg-row:hover { background: rgba(255,255,255,0.018); }
+
+    .msg-row:hover {
+      background: rgba(255, 255, 255, 0.018);
+    }
 
     .msg-meta {
       font-size: 0.72rem;
@@ -460,6 +571,7 @@
       align-items: center;
       gap: 8px;
     }
+
     .msg-meta-time {
       font-weight: 400;
       text-transform: none;
@@ -467,7 +579,10 @@
       color: var(--muted);
       font-size: 0.69rem;
     }
-    .meta-you { color: var(--accent); }
+
+    .meta-you {
+      color: var(--accent);
+    }
 
     .msg-text {
       font-size: 0.95rem;
@@ -478,17 +593,24 @@
     }
 
     /* User bubble */
-    .msg-row-user { align-items: flex-end; }
-    .msg-row-user .msg-meta { justify-content: flex-end; }
+    .msg-row-user {
+      align-items: flex-end;
+    }
+
+    .msg-row-user .msg-meta {
+      justify-content: flex-end;
+    }
+
     .msg-row-user .msg-text {
       background: var(--user-bubble);
-      border: 1px solid rgba(79,114,255,0.18);
+      border: 1px solid rgba(79, 114, 255, 0.18);
       border-radius: 10px;
       padding: 0.65rem 0.9rem;
       display: inline-block;
       max-width: 640px;
       margin-left: auto;
     }
+
     .msg-row-user {
       display: flex;
       flex-direction: column;
@@ -514,27 +636,35 @@
       text-align: center;
       padding: 3rem 2rem;
     }
+
     .empty-icon {
-      width: 44px; height: 44px;
+      width: 44px;
+      height: 44px;
       border: 1.5px solid var(--border2);
       border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       margin-bottom: 6px;
       opacity: 0.55;
     }
+
     .empty-icon svg {
-      width: 20px; height: 20px;
+      width: 20px;
+      height: 20px;
       stroke: var(--subtext);
       fill: none;
       stroke-width: 1.5;
       stroke-linecap: round;
       stroke-linejoin: round;
     }
+
     .empty-title {
       font-size: 0.92rem;
       font-weight: 600;
       color: var(--subtext);
     }
+
     .empty-sub {
       font-size: 0.83rem;
       max-width: 320px;
@@ -546,6 +676,7 @@
       margin-top: 8px;
       display: inline-block;
     }
+
     .sources-disclosure summary {
       display: inline-flex;
       align-items: center;
@@ -562,17 +693,23 @@
       user-select: none;
       transition: color 0.12s, background 0.12s, border-color 0.12s;
     }
-    .sources-disclosure summary::-webkit-details-marker { display: none; }
+
+    .sources-disclosure summary::-webkit-details-marker {
+      display: none;
+    }
+
     .sources-disclosure summary:hover {
       color: var(--accent);
       background: var(--surface3);
-      border-color: rgba(79,114,255,0.3);
+      border-color: rgba(79, 114, 255, 0.3);
     }
+
     .sources-disclosure[open] summary {
       color: var(--accent);
       background: var(--accent-soft);
-      border-color: rgba(79,114,255,0.3);
+      border-color: rgba(79, 114, 255, 0.3);
     }
+
     .sources-panel {
       margin-top: 8px;
       padding: 10px 14px;
@@ -583,6 +720,7 @@
       flex-wrap: wrap;
       gap: 6px;
     }
+
     .source-chip {
       display: inline-flex;
       align-items: center;
@@ -605,6 +743,7 @@
       gap: 8px;
       flex-shrink: 0;
     }
+
     .input-field {
       flex: 1;
       background: var(--bg);
@@ -618,11 +757,16 @@
       outline: none;
       transition: border-color 0.15s, box-shadow 0.15s;
     }
+
     .input-field:focus {
       border-color: var(--accent);
       box-shadow: 0 0 0 3px var(--accent-glow);
     }
-    .input-field::placeholder { color: var(--muted); font-size: 0.9rem; }
+
+    .input-field::placeholder {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
 
     .send-btn {
       height: 46px;
@@ -639,12 +783,17 @@
       transition: background 0.15s, transform 0.1s, box-shadow 0.15s;
       letter-spacing: 0.01em;
     }
+
     .send-btn:hover {
       background: var(--accent2);
       transform: translateY(-1px);
-      box-shadow: 0 4px 16px rgba(79,114,255,0.3);
+      box-shadow: 0 4px 16px rgba(79, 114, 255, 0.3);
     }
-    .send-btn:active { transform: translateY(0); }
+
+    .send-btn:active {
+      transform: translateY(0);
+    }
+
     .send-btn:disabled {
       opacity: 0.5;
       cursor: not-allowed;
@@ -668,6 +817,7 @@
       margin-bottom: 1.5rem;
       max-width: 720px;
     }
+
     .panel-title {
       font-size: 0.95rem;
       font-weight: 700;
@@ -675,6 +825,7 @@
       margin-bottom: 5px;
       letter-spacing: -0.01em;
     }
+
     .panel-sub {
       font-size: 0.83rem;
       color: var(--muted);
@@ -693,11 +844,13 @@
       transition: border-color 0.15s, background 0.15s;
       position: relative;
     }
+
     .dropzone:hover,
     .dropzone.drag-over {
       border-color: var(--accent);
       background: var(--accent-soft);
     }
+
     .dropzone input[type="file"] {
       position: absolute;
       inset: 0;
@@ -706,29 +859,49 @@
       width: 100%;
       height: 100%;
     }
+
     .dropzone-icon {
-      width: 40px; height: 40px;
+      width: 40px;
+      height: 40px;
       border: 1.5px solid var(--border2);
       border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       margin: 0 auto 12px;
       opacity: 0.6;
     }
+
     .dropzone-icon svg {
-      width: 18px; height: 18px;
-      stroke: var(--subtext); fill: none;
-      stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;
+      width: 18px;
+      height: 18px;
+      stroke: var(--subtext);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
+
     .dropzone-label {
       font-size: 0.88rem;
       font-weight: 500;
       color: var(--subtext);
       margin-bottom: 4px;
     }
-    .dropzone-label span { color: var(--accent); }
-    .dropzone-hint { font-size: 0.76rem; color: var(--muted); }
 
-    #selected-files { margin-top: 1rem; }
+    .dropzone-label span {
+      color: var(--accent);
+    }
+
+    .dropzone-hint {
+      font-size: 0.76rem;
+      color: var(--muted);
+    }
+
+    #selected-files {
+      margin-top: 1rem;
+    }
+
     .file-chip {
       display: inline-flex;
       align-items: center;
@@ -759,12 +932,28 @@
       transition: background 0.15s, transform 0.1s;
       letter-spacing: 0.01em;
     }
-    .btn-primary:hover { background: var(--accent2); transform: translateY(-1px); }
-    .btn-primary:active { transform: translateY(0); }
-    .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+    .btn-primary:hover {
+      background: var(--accent2);
+      transform: translateY(-1px);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0);
+    }
+
+    .btn-primary:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
 
     /* Ingest results */
-    #ingest-results { margin-top: 1.25rem; max-width: 720px; }
+    #ingest-results {
+      margin-top: 1.25rem;
+      max-width: 720px;
+    }
+
     .ingest-row {
       display: flex;
       align-items: flex-start;
@@ -775,23 +964,55 @@
       font-size: 0.84rem;
       line-height: 1.5;
     }
-    .ingest-ok   { background: var(--success-bg); color: var(--success); border: 1px solid rgba(16,185,129,0.18); }
-    .ingest-fail { background: var(--danger-bg);  color: var(--danger);  border: 1px solid rgba(239,68,68,0.18); }
-    .ingest-indicator { font-weight: 700; font-size: 1rem; flex-shrink: 0; }
-    .ingest-name { font-weight: 600; }
-    .ingest-detail { opacity: 0.75; font-size: 0.76rem; margin-top: 1px; }
+
+    .ingest-ok {
+      background: var(--success-bg);
+      color: var(--success);
+      border: 1px solid rgba(16, 185, 129, 0.18);
+    }
+
+    .ingest-fail {
+      background: var(--danger-bg);
+      color: var(--danger);
+      border: 1px solid rgba(239, 68, 68, 0.18);
+    }
+
+    .ingest-indicator {
+      font-weight: 700;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .ingest-name {
+      font-weight: 600;
+    }
+
+    .ingest-detail {
+      opacity: 0.75;
+      font-size: 0.76rem;
+      margin-top: 1px;
+    }
 
     /* ─────────────────────────────────────────────────────────────
        DOCUMENTS TAB
     ───────────────────────────────────────────────────────────── */
-    .docs-panel { max-width: 720px; }
+    .docs-panel {
+      max-width: 720px;
+    }
+
     .docs-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
       margin-bottom: 1.25rem;
     }
-    .docs-title { font-size: 0.95rem; font-weight: 700; color: var(--text); }
+
+    .docs-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
     .docs-count {
       background: var(--surface2);
       color: var(--subtext);
@@ -801,6 +1022,7 @@
       font-size: 0.74rem;
       font-weight: 600;
     }
+
     .doc-card {
       display: flex;
       align-items: center;
@@ -812,18 +1034,32 @@
       margin-bottom: 8px;
       transition: border-color 0.12s;
     }
-    .doc-card:hover { border-color: var(--border2); }
+
+    .doc-card:hover {
+      border-color: var(--border2);
+    }
+
     .doc-card-badge {
-      width: 36px; height: 36px;
+      width: 36px;
+      height: 36px;
       background: var(--surface2);
       border: 1px solid var(--border);
       border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.62rem; font-weight: 700;
-      color: var(--subtext); flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.62rem;
+      font-weight: 700;
+      color: var(--subtext);
+      flex-shrink: 0;
       letter-spacing: 0.04em;
     }
-    .doc-card-body { flex: 1; min-width: 0; }
+
+    .doc-card-body {
+      flex: 1;
+      min-width: 0;
+    }
+
     .doc-card-name {
       font-size: 0.88rem;
       font-weight: 600;
@@ -832,10 +1068,16 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    .doc-card-meta { font-size: 0.73rem; color: var(--muted); margin-top: 2px; }
+
+    .doc-card-meta {
+      font-size: 0.73rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
     .doc-card-remove {
       background: none;
-      border: 1px solid rgba(239,68,68,0.25);
+      border: 1px solid rgba(239, 68, 68, 0.25);
       border-radius: 6px;
       color: var(--danger);
       font-size: 0.78rem;
@@ -845,27 +1087,45 @@
       font-family: inherit;
       transition: background 0.12s;
     }
-    .doc-card-remove:hover { background: var(--danger-bg); }
+
+    .doc-card-remove:hover {
+      background: var(--danger-bg);
+    }
 
     .docs-empty {
       text-align: center;
       padding: 3.5rem 1rem;
     }
-    .docs-empty-title { font-size: 0.9rem; font-weight: 600; color: var(--subtext); margin-bottom: 8px; }
-    .docs-empty-sub { font-size: 0.83rem; color: var(--muted); line-height: 1.6; }
+
+    .docs-empty-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--subtext);
+      margin-bottom: 8px;
+    }
+
+    .docs-empty-sub {
+      font-size: 0.83rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
 
     /* ── Spinner ─────────────────────────────────────────────── */
     .spinner-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(13,14,20,0.7);
+      background: rgba(13, 14, 20, 0.7);
       display: flex;
       align-items: center;
       justify-content: center;
       z-index: 1000;
       display: none;
     }
-    .spinner-overlay.active { display: flex; }
+
+    .spinner-overlay.active {
+      display: flex;
+    }
+
     .spinner-box {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -876,19 +1136,27 @@
       align-items: center;
       gap: 14px;
     }
+
     .spinner {
-      width: 32px; height: 32px;
+      width: 32px;
+      height: 32px;
       border: 3px solid var(--border2);
       border-top-color: var(--accent);
       border-radius: 50%;
       animation: spin 0.7s linear infinite;
     }
+
     .spinner-text {
       font-size: 0.86rem;
       color: var(--subtext);
       font-weight: 500;
     }
-    @keyframes spin { to { transform: rotate(360deg); } }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
 
     /* ── Toast ─────────────────────────────────────────────────── */
     .toast {
@@ -901,397 +1169,421 @@
       padding: 12px 18px;
       font-size: 0.84rem;
       color: var(--text);
-      box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
       z-index: 2000;
       opacity: 0;
       transform: translateY(8px);
       transition: opacity 0.2s, transform 0.2s;
       max-width: 340px;
     }
-    .toast.show { opacity: 1; transform: translateY(0); }
-    .toast.toast-error { border-left: 3px solid var(--danger); }
-    .toast.toast-success { border-left: 3px solid var(--success); }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .toast.toast-error {
+      border-left: 3px solid var(--danger);
+    }
+
+    .toast.toast-success {
+      border-left: 3px solid var(--success);
+    }
 
     /* ── Light theme overrides ─────────────────────────────────── */
     body.light {
-      --bg:          #f2f3f8;
-      --sidebar:     #ffffff;
-      --surface:     #ffffff;
-      --surface2:    #edeef6;
-      --surface3:    #e4e5f0;
-      --border:      #dadbe8;
-      --border2:     #c4c6da;
-      --text:        #0e0f1a;
-      --subtext:     #454668;
-      --muted:       #8888a8;
-      --accent:      #3556e0;
-      --accent2:     #2440ba;
-      --accent-glow: rgba(53,86,224,0.15);
-      --accent-soft: rgba(53,86,224,0.07);
+      --bg: #f2f3f8;
+      --sidebar: #ffffff;
+      --surface: #ffffff;
+      --surface2: #edeef6;
+      --surface3: #e4e5f0;
+      --border: #dadbe8;
+      --border2: #c4c6da;
+      --text: #0e0f1a;
+      --subtext: #454668;
+      --muted: #8888a8;
+      --accent: #3556e0;
+      --accent2: #2440ba;
+      --accent-glow: rgba(53, 86, 224, 0.15);
+      --accent-soft: rgba(53, 86, 224, 0.07);
       --user-bubble: #e6eaff;
-      --success:     #059669;
-      --danger:      #dc2626;
-      --warning:     #d97706;
-      --success-bg:  #ecfdf5;
-      --danger-bg:   #fef2f2;
-      --warning-bg:  #fffbeb;
-      --scrollbar:   #c4c6da;
+      --success: #059669;
+      --danger: #dc2626;
+      --warning: #d97706;
+      --success-bg: #ecfdf5;
+      --danger-bg: #fef2f2;
+      --warning-bg: #fffbeb;
+      --scrollbar: #c4c6da;
     }
   </style>
 </head>
+
 <body>
 
-<!-- Spinner overlay -->
-<div class="spinner-overlay" id="spinner">
-  <div class="spinner-box">
-    <div class="spinner"></div>
-    <div class="spinner-text" id="spinner-text">Processing…</div>
+  <!-- Spinner overlay -->
+  <div class="spinner-overlay" id="spinner">
+    <div class="spinner-box">
+      <div class="spinner"></div>
+      <div class="spinner-text" id="spinner-text">Processing…</div>
+    </div>
   </div>
-</div>
 
-<!-- Toast -->
-<div class="toast" id="toast"></div>
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
 
-<!-- App shell -->
-<div class="shell">
+  <!-- App shell -->
+  <div class="shell">
 
-  <!-- ── Sidebar ───────────────────────────────────────────────── -->
-  <aside class="sidebar">
-    <div class="sidebar-header">
-      <div class="sidebar-logo">
-        <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-      </div>
-      <div>
-        <div class="sidebar-brand-name">RetailRAG</div>
-        <div class="sidebar-brand-sub">Retail Intelligence</div>
-      </div>
-    </div>
-
-    <div class="sidebar-body">
-      <span class="section-label">System Status</span>
-      <div class="status-group" id="status-area">
-        <div class="status-pill status-warn">
-          <span class="status-dot dot-warn"></span>Checking…
+    <!-- ── Sidebar ───────────────────────────────────────────────── -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">
+          <svg viewBox="0 0 24 24">
+            <rect x="1" y="3" width="15" height="13" rx="1" />
+            <path d="M16 8h4l3 3v5h-7V8z" />
+            <circle cx="5.5" cy="18.5" r="2.5" />
+            <circle cx="18.5" cy="18.5" r="2.5" />
+          </svg>
+        </div>
+        <div>
+          <div class="sidebar-brand-name">RetailRAG</div>
+          <div class="sidebar-brand-sub">Retail Intelligence</div>
         </div>
       </div>
 
-      <hr class="sidebar-divider" />
+      <div class="sidebar-body">
+        <span class="section-label">System Status</span>
+        <div class="status-group" id="status-area">
+          <div class="status-pill status-warn">
+            <span class="status-dot dot-warn"></span>Checking…
+          </div>
+        </div>
 
-      <span class="section-label">Documents</span>
-      <ul id="doc-list">
-        <li><span class="no-docs-note">Loading…</span></li>
-      </ul>
-
-      <div id="clear-chat-wrap" style="display:none; margin-top:0.5rem;">
         <hr class="sidebar-divider" />
-        <button class="sidebar-btn" id="clear-chat-btn">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/></svg>
-          Clear conversation
-        </button>
-      </div>
-    </div>
 
-    <div class="sidebar-footer">
-      <span class="section-label" style="margin-bottom:0.4rem;">Appearance</span>
-      <div class="theme-toggle">
-        <button class="theme-btn active" id="theme-dark" onclick="setTheme('dark')">Dark</button>
-        <button class="theme-btn" id="theme-light" onclick="setTheme('light')">Light</button>
-      </div>
-    </div>
-  </aside>
+        <span class="section-label">Documents</span>
+        <ul id="doc-list">
+          <li><span class="no-docs-note">Loading…</span></li>
+        </ul>
 
-  <!-- ── Main ─────────────────────────────────────────────────── -->
-  <div class="main">
-
-    <!-- Topbar -->
-    <div class="topbar">
-      <div class="topbar-left">
-        <span class="topbar-title">RetailRAG</span>
-        <div class="topbar-sep"></div>
-        <span class="topbar-sub">Retail Document Intelligence</span>
-      </div>
-      <div id="topbar-status"></div>
-    </div>
-
-    <!-- Tab nav -->
-    <nav class="tab-nav">
-      <button class="tab-btn active" onclick="switchTab('chat')">Chat</button>
-      <button class="tab-btn" onclick="switchTab('upload')">Upload Documents</button>
-      <button class="tab-btn" onclick="switchTab('docs')">Manage Documents</button>
-    </nav>
-
-    <!-- ── Chat tab ──────────────────────────────────────────── -->
-    <div class="tab-panel active" id="tab-chat">
-
-      <!-- Gate: no docs -->
-      <div class="gate" id="gate" style="display:none;">
-        <div class="gate-eyebrow">Getting Started</div>
-        <div class="gate-title">No Documents Loaded</div>
-        <div class="gate-sub">
-          Upload retail PDF files to begin asking questions.
-          Non-retail documents are automatically rejected.
-        </div>
-        <div class="gate-steps">
-          <div class="gate-step">
-            <div class="gate-step-num">1</div>
-            Open <strong>Upload Documents</strong>
-          </div>
-          <div class="gate-step">
-            <div class="gate-step-num">2</div>
-            Select and ingest PDF files
-          </div>
-          <div class="gate-step">
-            <div class="gate-step-num">3</div>
-            Return here and chat
-          </div>
+        <div id="clear-chat-wrap" style="display:none; margin-top:0.5rem;">
+          <hr class="sidebar-divider" />
+          <button class="sidebar-btn" id="clear-chat-btn">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="3 6 5 6 21 6" />
+              <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" />
+              <path d="M10 11v6" />
+              <path d="M14 11v6" />
+            </svg>
+            Clear conversation
+          </button>
         </div>
       </div>
 
-      <!-- Chat view: ready -->
-      <div id="chat-view" style="display:none; flex:1; flex-direction:column; overflow:hidden;">
-        <!-- Messages -->
-        <div class="messages" id="messages">
-          <div class="empty-state" id="empty-state">
-            <div class="empty-icon">
-              <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      <div class="sidebar-footer">
+        <span class="section-label" style="margin-bottom:0.4rem;">Appearance</span>
+        <div class="theme-toggle">
+          <button class="theme-btn active" id="theme-dark" onclick="setTheme('dark')">Dark</button>
+          <button class="theme-btn" id="theme-light" onclick="setTheme('light')">Light</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ── Main ─────────────────────────────────────────────────── -->
+    <div class="main">
+
+      <!-- Topbar -->
+      <div class="topbar">
+        <div class="topbar-left">
+          <span class="topbar-title">RetailRAG</span>
+          <div class="topbar-sep"></div>
+          <span class="topbar-sub">Retail Document Intelligence</span>
+        </div>
+        <div id="topbar-status"></div>
+      </div>
+
+      <!-- Tab nav -->
+      <nav class="tab-nav">
+        <button class="tab-btn active" onclick="switchTab('chat')">Chat</button>
+        <button class="tab-btn" onclick="switchTab('upload')">Upload Documents</button>
+        <button class="tab-btn" onclick="switchTab('docs')">Manage Documents</button>
+      </nav>
+
+      <!-- ── Chat tab ──────────────────────────────────────────── -->
+      <div class="tab-panel active" id="tab-chat">
+
+        <!-- Gate: no docs -->
+        <div class="gate" id="gate" style="display:none;">
+          <div class="gate-eyebrow">Getting Started</div>
+          <div class="gate-title">No Documents Loaded</div>
+          <div class="gate-sub">
+            Upload retail PDF files to begin asking questions.
+            Non-retail documents are automatically rejected.
+          </div>
+          <div class="gate-steps">
+            <div class="gate-step">
+              <div class="gate-step-num">1</div>
+              Open <strong>Upload Documents</strong>
             </div>
-            <div class="empty-title">Start a conversation</div>
-            <div class="empty-sub">Ask anything about your retail documents — products, pricing, inventory, sales, suppliers, and more.</div>
-          </div>
-        </div>
-
-        <!-- Input bar -->
-        <div class="input-bar">
-          <input
-            type="text"
-            id="chat-input"
-            class="input-field"
-            placeholder="Ask a question about your retail documents…"
-            autocomplete="off"
-          />
-          <button class="send-btn" id="send-btn">Send</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── Upload tab ─────────────────────────────────────────── -->
-    <div class="tab-panel" id="tab-upload">
-      <div class="tab-content">
-        <div class="panel">
-          <div class="panel-title">Upload Retail Documents</div>
-          <div class="panel-sub">
-            Upload one or more PDF files. Only retail and product-related documents are accepted;
-            others will be automatically rejected by the AI classifier.
-          </div>
-
-          <div class="dropzone" id="dropzone">
-            <input type="file" id="file-input" accept=".pdf" multiple />
-            <div class="dropzone-icon">
-              <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            <div class="gate-step">
+              <div class="gate-step-num">2</div>
+              Select and ingest PDF files
             </div>
-            <div class="dropzone-label">Drop PDF files here, or <span>click to browse</span></div>
-            <div class="dropzone-hint">Supports PDF files only</div>
-          </div>
-
-          <div id="selected-files"></div>
-
-          <div style="margin-top:1.25rem;">
-            <button class="btn-primary" id="ingest-btn" disabled>
-              Process and Ingest
-            </button>
+            <div class="gate-step">
+              <div class="gate-step-num">3</div>
+              Return here and chat
+            </div>
           </div>
         </div>
 
-        <div id="ingest-results"></div>
-      </div>
-    </div>
-
-    <!-- ── Documents tab ──────────────────────────────────────── -->
-    <div class="tab-panel" id="tab-docs">
-      <div class="tab-content">
-        <div class="docs-panel">
-          <div class="docs-header">
-            <div class="docs-title">Indexed Documents</div>
-            <span class="docs-count" id="docs-count">0 documents</span>
+        <!-- Chat view: ready -->
+        <div id="chat-view" style="display:none; flex:1; flex-direction:column; overflow:hidden;">
+          <!-- Messages -->
+          <div class="messages" id="messages">
+            <div class="empty-state" id="empty-state">
+              <div class="empty-icon">
+                <svg viewBox="0 0 24 24">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                </svg>
+              </div>
+              <div class="empty-title">Start a conversation</div>
+              <div class="empty-sub">Ask anything about your retail documents — products, pricing, inventory, sales,
+                suppliers, and more.</div>
+            </div>
           </div>
-          <div id="docs-list-main"></div>
+
+          <!-- Input bar -->
+          <div class="input-bar">
+            <input type="text" id="chat-input" class="input-field"
+              placeholder="Ask a question about your retail documents…" autocomplete="off" />
+            <button class="send-btn" id="send-btn">Send</button>
+          </div>
         </div>
       </div>
-    </div>
 
-  </div><!-- /.main -->
-</div><!-- /.shell -->
+      <!-- ── Upload tab ─────────────────────────────────────────── -->
+      <div class="tab-panel" id="tab-upload">
+        <div class="tab-content">
+          <div class="panel">
+            <div class="panel-title">Upload Retail Documents</div>
+            <div class="panel-sub">
+              Upload one or more PDF files. Only retail and product-related documents are accepted;
+              others will be automatically rejected by the AI classifier.
+            </div>
 
-<script>
-'use strict';
+            <div class="dropzone" id="dropzone">
+              <input type="file" id="file-input" accept=".pdf" multiple />
+              <div class="dropzone-icon">
+                <svg viewBox="0 0 24 24">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="17 8 12 3 7 8" />
+                  <line x1="12" y1="3" x2="12" y2="15" />
+                </svg>
+              </div>
+              <div class="dropzone-label">Drop PDF files here, or <span>click to browse</span></div>
+              <div class="dropzone-hint">Supports PDF files only</div>
+            </div>
 
-// ── Config ──────────────────────────────────────────────────────────────────
-const API = '';   // same origin — served by FastAPI at /
-let docsReady = false;
-let chatHistory = [];
-let currentDocs = [];
+            <div id="selected-files"></div>
 
-// ── Helpers ─────────────────────────────────────────────────────────────────
-function $(sel) { return document.querySelector(sel); }
-function $$(sel) { return document.querySelectorAll(sel); }
+            <div style="margin-top:1.25rem;">
+              <button class="btn-primary" id="ingest-btn" disabled>
+                Process and Ingest
+              </button>
+            </div>
+          </div>
 
-function esc(str) {
-  return String(str)
-    .replace(/&/g,'&amp;').replace(/</g,'&lt;')
-    .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
+          <div id="ingest-results"></div>
+        </div>
+      </div>
 
-function fmtTime(d) {
-  return d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-}
+      <!-- ── Documents tab ──────────────────────────────────────── -->
+      <div class="tab-panel" id="tab-docs">
+        <div class="tab-content">
+          <div class="docs-panel">
+            <div class="docs-header">
+              <div class="docs-title">Indexed Documents</div>
+              <span class="docs-count" id="docs-count">0 documents</span>
+            </div>
+            <div id="docs-list-main"></div>
+          </div>
+        </div>
+      </div>
 
-function showSpinner(msg = 'Processing…') {
-  $('#spinner-text').textContent = msg;
-  $('#spinner').classList.add('active');
-}
-function hideSpinner() { $('#spinner').classList.remove('active'); }
+    </div><!-- /.main -->
+  </div><!-- /.shell -->
 
-function showToast(msg, type = '') {
-  const t = $('#toast');
-  t.textContent = msg;
-  t.className = 'toast show' + (type ? ' toast-' + type : '');
-  setTimeout(() => {
-    t.classList.remove('show');
-  }, 3500);
-}
+  <script>
+    'use strict';
 
-// ── Theme ────────────────────────────────────────────────────────────────────
-function setTheme(mode) {
-  document.body.classList.toggle('light', mode === 'light');
-  $('#theme-dark').classList.toggle('active', mode === 'dark');
-  $('#theme-light').classList.toggle('active', mode === 'light');
-  localStorage.setItem('retailrag-theme', mode);
-}
-(function initTheme() {
-  const saved = localStorage.getItem('retailrag-theme') || 'dark';
-  setTheme(saved);
-})();
+    // ── Config ──────────────────────────────────────────────────────────────────
+    const API = '';   // same origin — served by FastAPI at /
+    let docsReady = false;
+    let chatHistory = [];
+    let currentDocs = [];
 
-// ── Tabs ─────────────────────────────────────────────────────────────────────
-function switchTab(name) {
-  $$('.tab-btn').forEach((b, i) => {
-    b.classList.toggle('active', ['chat','upload','docs'][i] === name);
-  });
-  $$('.tab-panel').forEach(p => p.classList.remove('active'));
-  $('#tab-' + name).classList.add('active');
-}
+    // ── Helpers ─────────────────────────────────────────────────────────────────
+    function $(sel) { return document.querySelector(sel); }
+    function $$(sel) { return document.querySelectorAll(sel); }
 
-// ── API calls ────────────────────────────────────────────────────────────────
-async function fetchHealth() {
-  try {
-    const r = await fetch(`${API}/health`);
-    return r.ok ? r.json() : null;
-  } catch { return null; }
-}
+    function esc(str) {
+      return String(str)
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
 
-async function fetchDocuments() {
-  try {
-    const r = await fetch(`${API}/documents`);
-    return r.ok ? (await r.json()).documents || [] : [];
-  } catch { return []; }
-}
+    function fmtTime(d) {
+      return d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    }
 
-async function deleteDoc(filename) {
-  const r = await fetch(`${API}/documents/${encodeURIComponent(filename)}`, { method: 'DELETE' });
-  return r.ok;
-}
+    function showSpinner(msg = 'Processing…') {
+      $('#spinner-text').textContent = msg;
+      $('#spinner').classList.add('active');
+    }
+    function hideSpinner() { $('#spinner').classList.remove('active'); }
 
-async function sendChat(question) {
-  const r = await fetch(`${API}/chat`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ question, include_sources: true })
-  });
-  if (!r.ok) {
-    const err = await r.json().catch(() => ({ detail: 'Server error' }));
-    throw new Error(err.detail || 'Error');
-  }
-  return r.json();
-}
+    function showToast(msg, type = '') {
+      const t = $('#toast');
+      t.textContent = msg;
+      t.className = 'toast show' + (type ? ' toast-' + type : '');
+      setTimeout(() => {
+        t.classList.remove('show');
+      }, 3500);
+    }
 
-async function uploadFiles(files) {
-  const fd = new FormData();
-  for (const f of files) fd.append('files', f);
-  const r = await fetch(`${API}/upload`, { method: 'POST', body: fd });
-  return { status: r.status, data: await r.json().catch(() => ({})) };
-}
+    // ── Theme ────────────────────────────────────────────────────────────────────
+    function setTheme(mode) {
+      document.body.classList.toggle('light', mode === 'light');
+      $('#theme-dark').classList.toggle('active', mode === 'dark');
+      $('#theme-light').classList.toggle('active', mode === 'light');
+      localStorage.setItem('retailrag-theme', mode);
+    }
+    (function initTheme() {
+      const saved = localStorage.getItem('retailrag-theme') || 'dark';
+      setTheme(saved);
+    })();
 
-// ── Status & sidebar ─────────────────────────────────────────────────────────
-function renderStatus(health, docs) {
-  const area = $('#status-area');
-  const topbar = $('#topbar-status');
-  if (!health) {
-    area.innerHTML = `
+    // ── Tabs ─────────────────────────────────────────────────────────────────────
+    function switchTab(name) {
+      $$('.tab-btn').forEach((b, i) => {
+        b.classList.toggle('active', ['chat', 'upload', 'docs'][i] === name);
+      });
+      $$('.tab-panel').forEach(p => p.classList.remove('active'));
+      $('#tab-' + name).classList.add('active');
+    }
+
+    // ── API calls ────────────────────────────────────────────────────────────────
+    async function fetchHealth() {
+      try {
+        const r = await fetch(`${API}/health`);
+        return r.ok ? r.json() : null;
+      } catch { return null; }
+    }
+
+    async function fetchDocuments() {
+      try {
+        const r = await fetch(`${API}/documents`);
+        return r.ok ? (await r.json()).documents || [] : [];
+      } catch { return []; }
+    }
+
+    async function deleteDoc(filename) {
+      const r = await fetch(`${API}/documents/${encodeURIComponent(filename)}`, { method: 'DELETE' });
+      return r.ok;
+    }
+
+    async function sendChat(question) {
+      const r = await fetch(`${API}/chat`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ question, include_sources: true })
+      });
+      if (!r.ok) {
+        const err = await r.json().catch(() => ({ detail: 'Server error' }));
+        throw new Error(err.detail || 'Error');
+      }
+      return r.json();
+    }
+
+    async function uploadFiles(files) {
+      const fd = new FormData();
+      for (const f of files) fd.append('files', f);
+      const r = await fetch(`${API}/upload`, { method: 'POST', body: fd });
+      return { status: r.status, data: await r.json().catch(() => ({})) };
+    }
+
+    // ── Status & sidebar ─────────────────────────────────────────────────────────
+    function renderStatus(health, docs) {
+      const area = $('#status-area');
+      const topbar = $('#topbar-status');
+      if (!health) {
+        area.innerHTML = `
       <div class="status-pill status-offline"><span class="status-dot dot-offline"></span>Backend offline</div>
       <div class="offline-notice">Start the backend server:<br/><code>uvicorn app:app --reload</code></div>`;
-    topbar.innerHTML = `<div class="status-pill status-offline"><span class="status-dot dot-offline"></span>Backend offline</div>`;
-    return;
-  }
-  const vsReady = health.vectorstore_initialized;
-  area.innerHTML = `
+        topbar.innerHTML = `<div class="status-pill status-offline"><span class="status-dot dot-offline"></span>Backend offline</div>`;
+        return;
+      }
+      const vsReady = health.vectorstore_initialized;
+      area.innerHTML = `
     <div class="status-pill status-online"><span class="status-dot dot-online"></span>Backend connected</div>
     <div class="status-pill ${vsReady ? 'status-online' : 'status-warn'}" style="margin-top:4px;">
       <span class="status-dot ${vsReady ? 'dot-online' : 'dot-warn'}"></span>
       ${vsReady ? `${docs.length} document${docs.length !== 1 ? 's' : ''} ready` : 'No documents loaded'}
     </div>`;
-  topbar.innerHTML = vsReady
-    ? `<div class="status-pill status-online"><span class="status-dot dot-online"></span>Ready &mdash; ${docs.length} document${docs.length !== 1 ? 's' : ''}</div>`
-    : `<div class="status-pill status-warn"><span class="status-dot dot-warn"></span>No documents loaded</div>`;
-}
+      topbar.innerHTML = vsReady
+        ? `<div class="status-pill status-online"><span class="status-dot dot-online"></span>Ready &mdash; ${docs.length} document${docs.length !== 1 ? 's' : ''}</div>`
+        : `<div class="status-pill status-warn"><span class="status-dot dot-warn"></span>No documents loaded</div>`;
+    }
 
-function renderSidebarDocs(docs) {
-  const list = $('#doc-list');
-  if (!docs.length) {
-    list.innerHTML = '<li><span class="no-docs-note">No documents loaded.</span></li>';
-    return;
-  }
-  list.innerHTML = docs.map(d => `
+    function renderSidebarDocs(docs) {
+      const list = $('#doc-list');
+      if (!docs.length) {
+        list.innerHTML = '<li><span class="no-docs-note">No documents loaded.</span></li>';
+        return;
+      }
+      list.innerHTML = docs.map(d => `
     <li class="doc-item">
       <div class="doc-badge">PDF</div>
       <span class="doc-name" title="${esc(d.filename)}">${esc(d.filename)}</span>
       <span class="doc-size">${d.size_kb}k</span>
       <button class="doc-remove" onclick="handleDelete('${esc(d.filename)}')" title="Remove">x</button>
     </li>`).join('');
-}
+    }
 
-function renderChatGate(docs) {
-  docsReady = docs.length > 0;
-  $('#gate').style.display = docsReady ? 'none' : 'flex';
-  $('#chat-view').style.display = docsReady ? 'flex' : 'none';
-  // Clear chat button visibility
-  $('#clear-chat-wrap').style.display = chatHistory.length > 0 ? 'block' : 'none';
-}
+    function renderChatGate(docs) {
+      docsReady = docs.length > 0;
+      $('#gate').style.display = docsReady ? 'none' : 'flex';
+      $('#chat-view').style.display = docsReady ? 'flex' : 'none';
+      // Clear chat button visibility
+      $('#clear-chat-wrap').style.display = chatHistory.length > 0 ? 'block' : 'none';
+    }
 
-async function refreshAll() {
-  const [health, docs] = await Promise.all([fetchHealth(), fetchDocuments()]);
-  currentDocs = docs;
-  renderStatus(health, docs);
-  renderSidebarDocs(docs);
-  renderChatGate(docs);
-  renderDocsTab(docs);
-}
+    async function refreshAll() {
+      const [health, docs] = await Promise.all([fetchHealth(), fetchDocuments()]);
+      currentDocs = docs;
+      renderStatus(health, docs);
+      renderSidebarDocs(docs);
+      renderChatGate(docs);
+      renderDocsTab(docs);
+    }
 
-// ── Documents tab ────────────────────────────────────────────────────────────
-function renderDocsTab(docs) {
-  const count = $('#docs-count');
-  const list  = $('#docs-list-main');
-  count.textContent = `${docs.length} document${docs.length !== 1 ? 's' : ''}`;
+    // ── Documents tab ────────────────────────────────────────────────────────────
+    function renderDocsTab(docs) {
+      const count = $('#docs-count');
+      const list = $('#docs-list-main');
+      count.textContent = `${docs.length} document${docs.length !== 1 ? 's' : ''}`;
 
-  if (!docs.length) {
-    list.innerHTML = `
+      if (!docs.length) {
+        list.innerHTML = `
       <div class="docs-empty">
         <div class="docs-empty-title">No documents indexed</div>
         <div class="docs-empty-sub">Upload PDF files in the <strong>Upload Documents</strong> tab to get started.</div>
       </div>`;
-    return;
-  }
+        return;
+      }
 
-  list.innerHTML = docs.map(d => `
+      list.innerHTML = docs.map(d => `
     <div class="doc-card">
       <div class="doc-card-badge">PDF</div>
       <div class="doc-card-body">
@@ -1300,31 +1592,31 @@ function renderDocsTab(docs) {
       </div>
       <button class="doc-card-remove" onclick="handleDelete('${esc(d.filename)}')">Remove</button>
     </div>`).join('');
-}
-
-async function handleDelete(filename) {
-  showSpinner('Removing document…');
-  try {
-    const ok = await deleteDoc(filename);
-    if (ok) {
-      showToast(`"${filename}" removed.`, 'success');
-      chatHistory = [];
-      renderMessages();
-      await refreshAll();
-    } else {
-      showToast('Failed to remove document.', 'error');
     }
-  } catch {
-    showToast('Connection error.', 'error');
-  }
-  hideSpinner();
-}
 
-// ── Chat ─────────────────────────────────────────────────────────────────────
-function renderMessages() {
-  const container = $('#messages');
-  if (!chatHistory.length) {
-    container.innerHTML = `
+    async function handleDelete(filename) {
+      showSpinner('Removing document…');
+      try {
+        const ok = await deleteDoc(filename);
+        if (ok) {
+          showToast(`"${filename}" removed.`, 'success');
+          chatHistory = [];
+          renderMessages();
+          await refreshAll();
+        } else {
+          showToast('Failed to remove document.', 'error');
+        }
+      } catch {
+        showToast('Connection error.', 'error');
+      }
+      hideSpinner();
+    }
+
+    // ── Chat ─────────────────────────────────────────────────────────────────────
+    function renderMessages() {
+      const container = $('#messages');
+      if (!chatHistory.length) {
+        container.innerHTML = `
       <div class="empty-state" id="empty-state">
         <div class="empty-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -1334,189 +1626,190 @@ function renderMessages() {
         <div class="empty-title">Start a conversation</div>
         <div class="empty-sub">Ask anything about your retail documents — products, pricing, inventory, sales, suppliers, and more.</div>
       </div>`;
-    $('#clear-chat-wrap').style.display = 'none';
-    return;
-  }
+        $('#clear-chat-wrap').style.display = 'none';
+        return;
+      }
 
-  $('#clear-chat-wrap').style.display = 'block';
+      $('#clear-chat-wrap').style.display = 'block';
 
-  let html = '';
-  chatHistory.forEach((msg, i) => {
-    const time = esc(msg.time);
-    const content = esc(msg.content);
+      let html = '';
+      chatHistory.forEach((msg, i) => {
+        const time = esc(msg.time);
+        const content = esc(msg.content);
 
-    if (msg.role === 'user') {
-      html += `
+        if (msg.role === 'user') {
+          html += `
         <div class="msg-row msg-row-user">
           <div class="msg-meta"><span class="meta-you">You</span><span class="msg-meta-time">${time}</span></div>
           <div class="msg-text">${content}</div>
         </div>`;
-    } else {
-      // Build sources pill
-      let sourcesHtml = '';
-      if (msg.sources && msg.sources.length) {
-        const count = msg.sources.length;
-        const chips = msg.sources.map(s =>
-          `<span class="source-chip">${esc(s.filename)} &middot; p.${esc(String(s.page))}</span>`
-        ).join('');
-        sourcesHtml = `
+        } else {
+          // Build sources pill
+          let sourcesHtml = '';
+          if (msg.sources && msg.sources.length) {
+            const count = msg.sources.length;
+            const chips = msg.sources.map(s =>
+              `<span class="source-chip">${esc(s.filename)} &middot; p.${esc(String(s.page))}</span>`
+            ).join('');
+            sourcesHtml = `
           <details class="sources-disclosure">
             <summary>${count} source${count !== 1 ? 's' : ''}</summary>
             <div class="sources-panel">${chips}</div>
           </details>`;
-      }
-      html += `
+          }
+          html += `
         <div class="msg-row">
           <div class="msg-meta">RetailRAG<span class="msg-meta-time">${time}</span></div>
           <div class="msg-text">${content}</div>
           ${sourcesHtml}
         </div>`;
+        }
+
+        // Divider between turns (not last)
+        if (i < chatHistory.length - 1) {
+          html += '<div class="msg-divider"></div>';
+        }
+      });
+
+      container.innerHTML = html;
+      container.scrollTop = container.scrollHeight;
     }
 
-    // Divider between turns (not last)
-    if (i < chatHistory.length - 1) {
-      html += '<div class="msg-divider"></div>';
+    async function handleSend() {
+      const input = $('#chat-input');
+      const sendBtn = $('#send-btn');
+      const question = input.value.trim();
+      if (!question) return;
+
+      input.value = '';
+      sendBtn.disabled = true;
+
+      chatHistory.push({ role: 'user', content: question, time: fmtTime(new Date()) });
+      renderMessages();
+
+      try {
+        const result = await sendChat(question);
+        chatHistory.push({
+          role: 'assistant',
+          content: result.answer || 'No answer returned.',
+          sources: result.sources || [],
+          time: fmtTime(new Date())
+        });
+      } catch (e) {
+        chatHistory.push({
+          role: 'assistant',
+          content: `Error: ${e.message}`,
+          sources: [],
+          time: fmtTime(new Date())
+        });
+      }
+
+      renderMessages();
+      sendBtn.disabled = false;
+      input.focus();
     }
-  });
 
-  container.innerHTML = html;
-  container.scrollTop = container.scrollHeight;
-}
+    // ── Upload ────────────────────────────────────────────────────────────────────
+    let selectedFiles = [];
 
-async function handleSend() {
-  const input  = $('#chat-input');
-  const sendBtn = $('#send-btn');
-  const question = input.value.trim();
-  if (!question) return;
+    function updateFileChips() {
+      const el = $('#selected-files');
+      const btn = $('#ingest-btn');
+      if (!selectedFiles.length) { el.innerHTML = ''; btn.disabled = true; return; }
+      el.innerHTML = selectedFiles.map(f =>
+        `<span class="file-chip">PDF &nbsp; ${esc(f.name)}</span>`
+      ).join('');
+      btn.disabled = false;
+    }
 
-  input.value = '';
-  sendBtn.disabled = true;
-
-  chatHistory.push({ role: 'user', content: question, time: fmtTime(new Date()) });
-  renderMessages();
-
-  try {
-    const result = await sendChat(question);
-    chatHistory.push({
-      role: 'assistant',
-      content: result.answer || 'No answer returned.',
-      sources: result.sources || [],
-      time: fmtTime(new Date())
-    });
-  } catch(e) {
-    chatHistory.push({
-      role: 'assistant',
-      content: `Error: ${e.message}`,
-      sources: [],
-      time: fmtTime(new Date())
-    });
-  }
-
-  renderMessages();
-  sendBtn.disabled = false;
-  input.focus();
-}
-
-// ── Upload ────────────────────────────────────────────────────────────────────
-let selectedFiles = [];
-
-function updateFileChips() {
-  const el = $('#selected-files');
-  const btn = $('#ingest-btn');
-  if (!selectedFiles.length) { el.innerHTML = ''; btn.disabled = true; return; }
-  el.innerHTML = selectedFiles.map(f =>
-    `<span class="file-chip">PDF &nbsp; ${esc(f.name)}</span>`
-  ).join('');
-  btn.disabled = false;
-}
-
-$('#file-input').addEventListener('change', function() {
-  selectedFiles = Array.from(this.files);
-  updateFileChips();
-});
-
-// Drag-and-drop
-const dz = $('#dropzone');
-['dragenter','dragover'].forEach(ev => {
-  dz.addEventListener(ev, e => { e.preventDefault(); dz.classList.add('drag-over'); });
-});
-['dragleave','drop'].forEach(ev => {
-  dz.addEventListener(ev, e => {
-    e.preventDefault();
-    dz.classList.remove('drag-over');
-    if (ev === 'drop' && e.dataTransfer.files.length) {
-      selectedFiles = Array.from(e.dataTransfer.files).filter(f => f.name.endsWith('.pdf'));
+    $('#file-input').addEventListener('change', function () {
+      selectedFiles = Array.from(this.files);
       updateFileChips();
-    }
-  });
-});
+    });
 
-$('#ingest-btn').addEventListener('click', async function() {
-  if (!selectedFiles.length) return;
-  showSpinner('Classifying and embedding documents…');
-  const resultsEl = $('#ingest-results');
-  resultsEl.innerHTML = '';
+    // Drag-and-drop
+    const dz = $('#dropzone');
+    ['dragenter', 'dragover'].forEach(ev => {
+      dz.addEventListener(ev, e => { e.preventDefault(); dz.classList.add('drag-over'); });
+    });
+    ['dragleave', 'drop'].forEach(ev => {
+      dz.addEventListener(ev, e => {
+        e.preventDefault();
+        dz.classList.remove('drag-over');
+        if (ev === 'drop' && e.dataTransfer.files.length) {
+          selectedFiles = Array.from(e.dataTransfer.files).filter(f => f.name.endsWith('.pdf'));
+          updateFileChips();
+        }
+      });
+    });
 
-  try {
-    const { status, data } = await uploadFiles(selectedFiles);
-    selectedFiles = [];
-    updateFileChips();
-    $('#file-input').value = '';
+    $('#ingest-btn').addEventListener('click', async function () {
+      if (!selectedFiles.length) return;
+      showSpinner('Classifying and embedding documents…');
+      const resultsEl = $('#ingest-results');
+      resultsEl.innerHTML = '';
 
-    let html = '<span class="section-label" style="margin-bottom:0.5rem;display:block;">Ingest Results</span>';
+      try {
+        const { status, data } = await uploadFiles(selectedFiles);
+        selectedFiles = [];
+        updateFileChips();
+        $('#file-input').value = '';
 
-    if (status === 200) {
-      (data.files_processed || []).forEach(f => {
-        html += `<div class="ingest-row ingest-ok">
+        let html = '<span class="section-label" style="margin-bottom:0.5rem;display:block;">Ingest Results</span>';
+
+        if (status === 200) {
+          (data.files_processed || []).forEach(f => {
+            html += `<div class="ingest-row ingest-ok">
           <span class="ingest-indicator">+</span>
           <div><div class="ingest-name">${esc(f.filename)}</div><div class="ingest-detail">${f.chunks} chunks indexed</div></div></div>`;
-      });
-      (data.files_rejected || []).forEach(f => {
-        html += `<div class="ingest-row ingest-fail">
+          });
+          (data.files_rejected || []).forEach(f => {
+            html += `<div class="ingest-row ingest-fail">
           <span class="ingest-indicator">-</span>
           <div><div class="ingest-name">${esc(f.filename)}</div><div class="ingest-detail">${esc(f.reason)}</div></div></div>`;
-      });
-      showToast('Ingest complete.', 'success');
-    } else if (status === 422) {
-      const detail = data.detail || {};
-      (detail.rejected || []).forEach(f => {
-        html += `<div class="ingest-row ingest-fail">
+          });
+          showToast('Ingest complete.', 'success');
+        } else if (status === 422) {
+          const detail = data.detail || {};
+          (detail.rejected || []).forEach(f => {
+            html += `<div class="ingest-row ingest-fail">
           <span class="ingest-indicator">-</span>
           <div><div class="ingest-name">${esc(f.filename)}</div><div class="ingest-detail">${esc(f.reason)}</div></div></div>`;
-      });
-      showToast('All files were rejected.', 'error');
-    } else {
-      html += `<div class="ingest-row ingest-fail"><span class="ingest-indicator">-</span><div>Upload failed (HTTP ${status})</div></div>`;
-      showToast('Upload failed.', 'error');
-    }
+          });
+          showToast('All files were rejected.', 'error');
+        } else {
+          html += `<div class="ingest-row ingest-fail"><span class="ingest-indicator">-</span><div>Upload failed (HTTP ${status})</div></div>`;
+          showToast('Upload failed.', 'error');
+        }
 
-    resultsEl.innerHTML = html;
-    await refreshAll();
-  } catch(e) {
-    showToast('Connection error: ' + e.message, 'error');
-  }
-  hideSpinner();
-});
+        resultsEl.innerHTML = html;
+        await refreshAll();
+      } catch (e) {
+        showToast('Connection error: ' + e.message, 'error');
+      }
+      hideSpinner();
+    });
 
-// ── Clear chat ────────────────────────────────────────────────────────────────
-$('#clear-chat-btn').addEventListener('click', () => {
-  chatHistory = [];
-  renderMessages();
-  $('#clear-chat-wrap').style.display = 'none';
-});
+    // ── Clear chat ────────────────────────────────────────────────────────────────
+    $('#clear-chat-btn').addEventListener('click', () => {
+      chatHistory = [];
+      renderMessages();
+      $('#clear-chat-wrap').style.display = 'none';
+    });
 
-// ── Send on Enter ─────────────────────────────────────────────────────────────
-$('#chat-input').addEventListener('keydown', e => {
-  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSend(); }
-});
-$('#send-btn').addEventListener('click', handleSend);
+    // ── Send on Enter ─────────────────────────────────────────────────────────────
+    $('#chat-input').addEventListener('keydown', e => {
+      if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSend(); }
+    });
+    $('#send-btn').addEventListener('click', handleSend);
 
-// ── Poll / init ───────────────────────────────────────────────────────────────
-(async function init() {
-  await refreshAll();
-  // Refresh status every 10s
-  setInterval(refreshAll, 10000);
-})();
-</script>
+    // ── Poll / init ───────────────────────────────────────────────────────────────
+    (async function init() {
+      await refreshAll();
+      // Refresh status every 10s
+      setInterval(refreshAll, 10000);
+    })();
+  </script>
 </body>
+
 </html>
