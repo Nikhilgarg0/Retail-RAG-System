@@ -1110,6 +1110,56 @@
       line-height: 1.6;
     }
 
+    /* ── Typing indicator ─────────────────────────────────────── */
+    .typing-row {
+      padding: 0.55rem 2rem;
+    }
+
+    .typing-bubble {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.55rem 0.85rem;
+    }
+
+    .typing-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--subtext);
+      animation: typingBounce 1.2s ease-in-out infinite;
+    }
+
+    .typing-dot:nth-child(1) {
+      animation-delay: 0s;
+    }
+
+    .typing-dot:nth-child(2) {
+      animation-delay: 0.18s;
+    }
+
+    .typing-dot:nth-child(3) {
+      animation-delay: 0.36s;
+    }
+
+    @keyframes typingBounce {
+
+      0%,
+      60%,
+      100% {
+        transform: translateY(0);
+        opacity: 0.45;
+      }
+
+      30% {
+        transform: translateY(-5px);
+        opacity: 1;
+      }
+    }
+
     /* ── Spinner ─────────────────────────────────────────────── */
     .spinner-overlay {
       position: fixed;
@@ -1236,20 +1286,7 @@
 
     <!-- ── Sidebar ───────────────────────────────────────────────── -->
     <aside class="sidebar">
-      <div class="sidebar-header">
-        <div class="sidebar-logo">
-          <svg viewBox="0 0 24 24">
-            <rect x="1" y="3" width="15" height="13" rx="1" />
-            <path d="M16 8h4l3 3v5h-7V8z" />
-            <circle cx="5.5" cy="18.5" r="2.5" />
-            <circle cx="18.5" cy="18.5" r="2.5" />
-          </svg>
-        </div>
-        <div>
-          <div class="sidebar-brand-name">RetailRAG</div>
-          <div class="sidebar-brand-sub">Retail Intelligence</div>
-        </div>
-      </div>
+
 
       <div class="sidebar-body">
         <span class="section-label">System Status</span>
@@ -1675,6 +1712,31 @@
       container.scrollTop = container.scrollHeight;
     }
 
+    function showTypingIndicator() {
+      const container = $('#messages');
+      // Remove any existing indicator first
+      const existing = container.querySelector('#typing-indicator');
+      if (existing) existing.remove();
+
+      const row = document.createElement('div');
+      row.id = 'typing-indicator';
+      row.className = 'typing-row';
+      row.innerHTML = `
+        <div class="msg-meta">RetailRAG</div>
+        <div class="typing-bubble">
+          <span class="typing-dot"></span>
+          <span class="typing-dot"></span>
+          <span class="typing-dot"></span>
+        </div>`;
+      container.appendChild(row);
+      container.scrollTop = container.scrollHeight;
+    }
+
+    function hideTypingIndicator() {
+      const el = $('#messages').querySelector('#typing-indicator');
+      if (el) el.remove();
+    }
+
     async function handleSend() {
       const input = $('#chat-input');
       const sendBtn = $('#send-btn');
@@ -1687,8 +1749,12 @@
       chatHistory.push({ role: 'user', content: question, time: fmtTime(new Date()) });
       renderMessages();
 
+      // Show typing indicator while waiting for model response
+      showTypingIndicator();
+
       try {
         const result = await sendChat(question);
+        hideTypingIndicator();
         chatHistory.push({
           role: 'assistant',
           content: result.answer || 'No answer returned.',
@@ -1696,6 +1762,7 @@
           time: fmtTime(new Date())
         });
       } catch (e) {
+        hideTypingIndicator();
         chatHistory.push({
           role: 'assistant',
           content: `Error: ${e.message}`,
